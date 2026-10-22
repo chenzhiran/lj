@@ -34,6 +34,11 @@
       object-fit:cover;
       margin:0 auto 24px;
       box-shadow:0 12px 30px rgba(160,20,40,0.25);
+      cursor:pointer;
+      transition: transform 0.2s ease;
+    }
+    .cover:active{
+      transform: scale(0.97);
     }
     .title{
       font-size:24px;
@@ -44,26 +49,53 @@
     .artist{
       font-size:14px;
       color:#999;
-      margin-bottom:30px;
+      margin-bottom:20px;
       letter-spacing:2px;
     }
-    audio{
-      width:100%;
+    .tip{
+      font-size:13px;
+      color:#777;
     }
-    audio::-webkit-media-controls-panel{
-      background:rgba(255,255,255,0.08);
+    audio{
+      display: none;
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <img class="cover" src="cover.jpg" alt="封面">
+    <img class="cover" id="coverImg" src="cover.jpg" alt="封面">
     <div class="title">寻.华晨宇</div>
-    <div class="artist">触碰NFC · 即刻播放</div>
-    <audio controls preload="auto">
+    <div class="artist">华晨宇</div>
+    <div class="tip">点击封面 ▶ / ⏸</div>
+    <audio id="audioPlayer" preload="auto">
       <source src="music.mp3" type="audio/mpeg">
-      你的浏览器不支持音频播放
     
   </div>
+
+<script>
+const audio = document.getElementById('audioPlayer');
+const cover = document.getElementById('coverImg');
+
+// 封面点击：播放暂停切换
+cover.addEventListener('click', () => {
+  if (audio.paused) {
+    audio.play();
+  } else {
+    audio.pause();
+  }
+});
+
+// 页面失去焦点、切后台、切换标签页 → 自动暂停
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    audio.pause();
+  }
+});
+
+// 窗口关闭/刷新前暂停
+window.addEventListener('beforeunload', () => {
+  audio.pause();
+});
+</script>
 </body>
 </html>
