@@ -1,25 +1,69 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<title>我的NFC音乐页</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#111;color:#fff;text-align:center;padding:40px}
-.box{max-width:400px;margin:0 auto}
-.cover{width:240px;height:240px;border-radius:16px;object-fit:cover;margin-bottom:20px}
-audio{width:100%}
-h2{margin-bottom:20px}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>寻.华晨宇</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      min-height:100vh;
+      background:#08080a;
+      color:#fff;
+      font-family:system-ui,-apple-system,Segoe UI,sans-serif;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+    .card{
+      width:100%;
+      max-width:380px;
+      background:linear-gradient(145deg,#16161b,#0c0c0f);
+      border-radius:22px;
+      padding:32px 24px;
+      text-align:center;
+      box-shadow:0 20px 60px rgba(180,30,50,0.18);
+      border:1px solid rgba(255,255,255,0.07);
+    }
+    .cover{
+      width:72%;
+      aspect-ratio:1/1;
+      border-radius:16px;
+      object-fit:cover;
+      margin:0 auto 24px;
+      box-shadow:0 12px 30px rgba(160,20,40,0.25);
+    }
+    .title{
+      font-size:24px;
+      letter-spacing:4px;
+      color:#f0f0f2;
+      margin-bottom:8px;
+    }
+    .artist{
+      font-size:14px;
+      color:#999;
+      margin-bottom:30px;
+      letter-spacing:2px;
+    }
+    audio{
+      width:100%;
+    }
+    audio::-webkit-media-controls-panel{
+      background:rgba(255,255,255,0.08);
+    }
+  </style>
 </head>
 <body>
-<div class="box">
-  <img class="cover" src="cover.jpg" alt="封面">
-  <h2>寻.华晨宇</h2>
-  <audio controls loop>
-    <source src="music.mp3" type="audio/mpeg">
-    浏览器不支持音频
-  
-</div>
+  <div class="card">
+    <img class="cover" src="cover.jpg" alt="封面">
+    <div class="title">寻.华晨宇</div>
+    <div class="artist">触碰NFC · 即刻播放</div>
+    <audio controls preload="auto">
+      <source src="music.mp3" type="audio/mpeg">
+      你的浏览器不支持音频播放
+    
+  </div>
 </body>
 </html>
